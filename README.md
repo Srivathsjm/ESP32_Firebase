@@ -6,5 +6,7 @@ ESP32
 
 ## Libraries needed
 ESP32 is programmed in Arduino IDE and the following libraries are needed:
+
 [IOXhop_FirebaseESP32](https://github.com/ioxhop/IOXhop_FirebaseESP32)
+
 [ArduinoJson v5.13.3](https://github.com/bblanchon/ArduinoJson/releases/tag/v5.13.3)
