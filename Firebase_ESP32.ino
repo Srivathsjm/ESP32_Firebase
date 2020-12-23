@@ -26,18 +26,18 @@ void setup() {
 
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
   Firebase.setString("User","Harry's Car");
-  Firebase.setInt("SOC",80);
+  Firebase.setInt("SOC",20);
   Firebase.setString("Expected Time to complete charging","1 hr 50 min");
   Firebase.setBool("Charging Status",1);
   Firebase.setBool("Finished Charging",0);
-  
+  delay(5000);
 }
 
 void loop(){
 
   // Mimics charging by increasing the State of Charge at regular intervals
   
-  delay(5000);
+  delay(2000);
   Firebase.setInt("SOC",82);
   Firebase.setString("Expected Time to complete charging","1 hr 45 min");
   delay(5000);
