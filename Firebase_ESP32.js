@@ -1,26 +1,26 @@
 function firebase() {
-  var base = FirebaseApp.getDatabaseByUrl("https://fir-a92d1.firebaseio.com/", "ahqhO1svDsU8ImewZTSLBFejgE0yrDkwEZSYxrxg");
+  var base = FirebaseApp.getDatabaseByUrl("https://jc20-3e430.firebaseio.com/", "8xWPBaMRxJJioPrNoXEYylAFzoM5Lw8Q3xxlxs3R");
   Logger.log(base.getData());
   var sheet = SpreadsheetApp.openById("1AaL1c0An5g4sLtEpnfdrPdlJDFmEcQUnB7-FfV6yR70");
-  var User = base.getData("User");
+  var User = base.getData("4S764vco0MW5Ccx1GPoqMrSC5Sp2/User");
   sheet.getRange("A2").setValue(User);
-  var chargingState = base.getData("Charging Status");
+  var chargingState = base.getData("4S764vco0MW5Ccx1GPoqMrSC5Sp2/Charging Status");
   sheet.getRange("C2").setValue(chargingState);
-  var finishState = base.getData("Finished Charging");
+  var finishState = base.getData("4S764vco0MW5Ccx1GPoqMrSC5Sp2/Finished Charging");
   
 
   // Wait for chargingState to be 1
   while(chargingState == false)
   {
-    chargingState = base.getData("Charging Status");
+    chargingState = base.getData("4S764vco0MW5Ccx1GPoqMrSC5Sp2/Charging Status");
   }
-    Utilities.sleep(7000);   // Wait for initial SOC to be updated in Firebase.
-    var SOC = base.getData("SOC");
+    Utilities.sleep(4000);   // Wait for initial SOC to be updated in Firebase.
+    var SOC = base.getData("4S764vco0MW5Ccx1GPoqMrSC5Sp2/SOC");
     sheet.getRange("E2").setValue(SOC);
     while(finishState == false)
     {
-      SOC = base.getData("SOC");
-      finishState = base.getData("Finished Charging");
+      SOC = base.getData("4S764vco0MW5Ccx1GPoqMrSC5Sp2/SOC");
+      finishState = base.getData("4S764vco0MW5Ccx1GPoqMrSC5Sp2/Finished Charging");
     }
     sheet.getRange("D2").setValue(finishState);
     sheet.getRange("F2").setValue(SOC);
@@ -28,7 +28,7 @@ function firebase() {
     sheet.getRange("G2").setValue(totalEnergy);
 
     // Call Billing function
-      var sourceSpreadsheet = SpreadsheetApp.openById("1sKZDwOKsrdFiIvw-vyDpl4Mcw_wMOBlihmrpd6KrnZs");    // Template Invoice spreadsheet ID
+      var sourceSpreadsheet = SpreadsheetApp.openById("1sKZDwOKsrdFiIvw-vyDpl4Mcw_wMOBlihmrpd6KrnZs");    // Invoice spreadsheet ID
       sourceSpreadsheet.getRange("D9").setValue(Utilities.formatDate(new Date(),"IST","dd-MM-yyyy"));
       sourceSpreadsheet.getRange("B12").setValue(User);
       sourceSpreadsheet.getRange("E19").setValue(totalEnergy);
@@ -84,6 +84,6 @@ function firebase() {
     filename.setName(pdfName + ".pdf"); 
     var message = 'Dear ' + sheet.getRange("A2").getValue() + ", \n The bill for your charging session has been attached with this mail. \n Thank you for charging. Please visit again";
    var subject = 'Invoice for' + sheet.getRange("A2").getValue();
-   GmailApp.sendEmail("rakshithjc.ec17@rvce.edu.in", subject,message,{attachments: [filename]});
+   GmailApp.sendEmail("srivathsjm.ec17@rvce.edu.in", subject,message,{attachments: [filename]});
   
 }
