@@ -31,8 +31,8 @@ public class Reg_Activity extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
         first_name=findViewById(R.id.firstname);
         last_name=findViewById(R.id.lastname);
-        phone= findViewById(R.id.editTextPhone);
-        date= findViewById(R.id.editTextDate);
+        phone=(EditText)findViewById(R.id.editTextPhone);
+        date=(EditText)findViewById(R.id.editTextDate);
         submitbut=findViewById(R.id.button);
         user=mFirebaseAuth.getCurrentUser();
         submitbut.setOnClickListener(new View.OnClickListener() {
