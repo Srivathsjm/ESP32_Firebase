@@ -51,12 +51,12 @@ public class Reg_Activity extends AppCompatActivity {
                     if(user!=null){
                         database = FirebaseDatabase.getInstance();
                         myRef = database.getReference(uid);
-                        myRef.child("First_Name").setValue(name1);
+                        myRef.child("User").setValue(name1);
                         myRef.child("Last_Name").setValue(name2);
                         myRef.child("Date_Of_Birth").setValue(dob);
                         myRef.child("Phone_Number").setValue(ph);
                         myRef.child("Balance").setValue("0");
-                        myRef.child("Battery").setValue("0");
+                        myRef.child("SOC").setValue("0");
                         myRef.child("Last_recharge").setValue("0");
                         myRef.child("Range").setValue("0");
                         startActivity(new Intent(Reg_Activity.this, HomeActivity.class));

@@ -70,9 +70,10 @@ public class HomeActivity extends AppCompatActivity implements LocationListener 
         stationTextView = findViewById(R.id.station);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
+        Log.d("UID",uid);
         getLocation();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference name_ref = database.getReference(uid).child("First_Name");
+        DatabaseReference name_ref = database.getReference(uid).child("User");
         name_ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -85,7 +86,7 @@ public class HomeActivity extends AppCompatActivity implements LocationListener 
 
             }
         });
-        DatabaseReference batt = database.getReference(uid).child("Battery");
+        DatabaseReference batt = database.getReference(uid).child("SOC");
         batt.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
