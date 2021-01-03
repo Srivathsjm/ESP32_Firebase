@@ -50,7 +50,9 @@ public class HomeActivity extends AppCompatActivity implements LocationListener 
     FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
     TextView name, battery, range, latTextView, stationTextView,error;
-    String bat, rng, disp_name;
+    Integer bat;
+    String rng;
+    String disp_name;
     LocationManager locationManager;
     int i=0;
     double latitude, longitude,dest_lat,dest_log,rang;
@@ -90,11 +92,11 @@ public class HomeActivity extends AppCompatActivity implements LocationListener 
         batt.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                bat = snapshot.getValue(String.class);
+                bat = snapshot.getValue(Integer.class);
                 rang=(double)Integer.valueOf(bat)/(double)100*450;
-                battery.setText(bat);
+                battery.setText(String.valueOf(bat));
                 range.setText(String.valueOf(rang));
-                Log.d("range",bat);
+                //Log.d("range",bat);
                 Log.d("range1",String.valueOf(rang));
                 System.out.println(rng);
                 if(Integer.valueOf(bat)<=20) {
