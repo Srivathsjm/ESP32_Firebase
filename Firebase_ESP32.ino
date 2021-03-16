@@ -1,8 +1,8 @@
 #include <WiFi.h>                                                     
 #include <IOXhop_FirebaseESP32.h>
 
-#define FIREBASE_HOST "jc20-3e430.firebaseio.com"// "fir-a92d1.firebaseio.com"
-#define FIREBASE_AUTH "8xWPBaMRxJJioPrNoXEYylAFzoM5Lw8Q3xxlxs3R" // "ahqhO1svDsU8ImewZTSLBFejgE0yrDkwEZSYxrxg"
+#define FIREBASE_HOST "PROJECT_ID"
+#define FIREBASE_AUTH "PROJECT_KEY"
 
 #define WIFI_SSID "Sri" 
 #define WIFI_PASSWORD "redminote7pro"
