@@ -1,7 +1,7 @@
 function firebase() {
-  var base = FirebaseApp.getDatabaseByUrl("https://jc20-3e430.firebaseio.com/", "8xWPBaMRxJJioPrNoXEYylAFzoM5Lw8Q3xxlxs3R");
+  var base = FirebaseApp.getDatabaseByUrl("PROJECT_ID", "PROJECT_KEY");
   Logger.log(base.getData());
-  var sheet = SpreadsheetApp.openById("1AaL1c0An5g4sLtEpnfdrPdlJDFmEcQUnB7-FfV6yR70");
+  var sheet = SpreadsheetApp.openById("SPREADSHEET_ID");
   var User = base.getData("4S764vco0MW5Ccx1GPoqMrSC5Sp2/User");
   sheet.getRange("A2").setValue(User);
   var chargingState = base.getData("4S764vco0MW5Ccx1GPoqMrSC5Sp2/Charging Status");
@@ -28,7 +28,7 @@ function firebase() {
     sheet.getRange("G2").setValue(totalEnergy);
 
     // Call Billing function
-      var sourceSpreadsheet = SpreadsheetApp.openById("1sKZDwOKsrdFiIvw-vyDpl4Mcw_wMOBlihmrpd6KrnZs");    // Invoice spreadsheet ID
+      var sourceSpreadsheet = SpreadsheetApp.openById("INVOICE_SHEET_ID");    // Invoice spreadsheet ID
       sourceSpreadsheet.getRange("D9").setValue(Utilities.formatDate(new Date(),"IST","dd-MM-yyyy"));
       sourceSpreadsheet.getRange("B12").setValue(User);
       sourceSpreadsheet.getRange("E19").setValue(totalEnergy);
